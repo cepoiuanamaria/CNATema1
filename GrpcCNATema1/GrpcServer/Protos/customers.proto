@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer.Protos";
+
+service Customer {
+	rpc GetCustomerInfo (CustomerLookupModel) returns (CustomerModel);
+	rpc GetNewCustomers(NewCustomerRequest)returns (stream CustomerModel);
+}
+
+message NewCustomerRequest{
+
+}
+
+message CustomerLookupModel {
+	int32 userId =1;
+}
+
+message CustomerModel {
+	string firstName=1;
+	string secondName=2;
+	bool isAlive=3;
+	int32 age=4;
+}
